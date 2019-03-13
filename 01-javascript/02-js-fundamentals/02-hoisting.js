@@ -60,10 +60,10 @@ function test(){
 var brendan;
 function print(){
     brendan = 'only okay';
-    console.log(brendan); // logs brendan
+    console.log(brendan);
 }
 brendan = 'super cool';
-console.log(brendan);
+console.log(brendan); //logs super cool
 
 //ES6
 
@@ -85,7 +85,7 @@ console.log(print());
 	//console.log(food);
 	//var food = 'gone';
 //}
-////AFTER HOISTING BY THE INTERPRETER
+//AFTER HOISTING BY THE INTERPRETER
 
 var food;
 food='chicken';
@@ -96,7 +96,8 @@ function eat(){
     console.log(food);
     food = "gone";
 }
-eat();
+eat(); //logs chicken half-chicken
+//------------------
 
 //5
 //GIVEN
@@ -109,6 +110,77 @@ eat();
 	//console.log(food);
 //}
 //console.log(food);
+
+var mean;
+mean();
+console.log(food);
+mean = function(){
+    var food;
+    food=fish;
+    console.log(food);
+    var food;
+    food="chicken"
+    console.log(food);
+}
+console.log(food); //mean is not a function
+//---------------
+
+//6
+//console.log(genre);
+//var genre = "disco";
+//rewind();
+//function rewind() {
+//	genre = "rock";
+//	console.log(genre);
+//	var genre = "r&b";
+//	console.log(genre);
+//}
+//console.log(genre);
+
+var genre;
+genre="disco";
+rewind();
+function rewind(){
+    var genre;
+    genre="rock";
+    console.log(genre);
+    var genre;
+    genre = "r&b";
+    console.log(genre);
+}
+console.log(genre); //logs rock, sdisco and r&b
+
+//----------------
+
+
+//7
+//dojo = "san jose";
+//console.log(dojo);
+//learn();
+//function learn() {
+//	dojo = "seattle";
+//	console.log(dojo);
+//	var dojo = "burbank";
+//	console.log(dojo);
+//}
+//console.log(dojo);
+//AFTER HOISTING BY THE INTERPRETER
+
+dojo = "san jose";
+console.log(dojo);
+learn();
+function learn() {
+    var dojo;
+    dojo="burbank"
+    console.log(dojo);
+	dojo = "seattle";
+	console.log(dojo);
+	
+}
+console.log(dojo);//logs san jose, burbank, seattle and san jose
+
+
+
 
 
 
