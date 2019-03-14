@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <title>Game of Thrones</title>
+
+    <style>
+    img{
+        width:250px;
+        height:200px;
+    }
+
+    .house{
+        display:inline-block;
+        vertical-align:top;
+        margin:5px;
+        border:2px solid grey;
+        background-color:gainsboro;
+    }
+
+    #content{
+        border:2px solid grey;
+        width:93%;
+    }
+
+    .house:hover {
+        background-color:grey;
+    }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="house">
+            <h4>House Stark</h4>
+            <img src="./assets/images/stark.jpg" alt="stark" id="stark">
+        </div>
+        <div class="house" id="378">
+            <h4>Targaryen</h4>
+            <img src="./assets/images/targaryen.jpg" alt="targaryen" id="targaryen">
+        </div>
+        <div class="house" id="229">
+            <h4>House Lannister</h4>
+            <img src="./assets/images/lannister.jpg" alt="lannister" id="lannister">
+        </div>
+        <div class="house" id="17">
+            <h4>House Baratheon</h4>
+            <img src="./assets/images/baratheon.png" alt="baratheon" id="baratheon">
+        </div>
+
+        <div id="content">
+            <h4>House Details</h4>
+        </div>
+    </div>
+    <script>
+    $("#stark").click(function() {
+        
+        
+        $.get("https://anapioficeandfire.com/api/houses/362", displayHouse);
+            })
+        function displayHouse(data) {
+        $('#content').append("<p>" + "Name: " + data.name + "</p>" + "<p>" + "Words: " + data.words + "</p>" + "<p>" + "Titles: " + data.titles + "</p>")
+        }
+
+    $("#targaryen").click(function() {
+    
+        $.get("https://anapioficeandfire.com/api/houses/378", displayHouse);
+            })
+        function displayHouse(data) {
+        $('#content').append("<p>" + "Name: " + data.name + "</p>" + "<p>" + "Words: " + data.words + "</p>" + "<p>" + "Titles: " + data.titles + "</p>")
+        }
+
+    $("#lannister").click(function() {
+    
+        $.get("https://anapioficeandfire.com/api/houses/229", displayHouse);
+            })
+        function displayHouse(data) {
+        $('#content').append("<p>" + "Name: " + data.name + "</p>" + "<p>" + "Words: " + data.words + "</p>" + "<p>" + "Titles: " + data.titles + "</p>")
+        }
+    
+    $("#baratheon").click(function() {
+    
+        $.get("https://anapioficeandfire.com/api/houses/17", displayHouse);
+            })
+        function displayHouse(data) {
+        $('#content').append("<p>" + "Name: " + data.name + "</p>" + "<p>" + "Words: " + data.words + "</p>" + "<p>" + "Titles: " + data.titles + "</p>")
+        }
+
+    </script>
+
+</body>
+</html>
+
+
