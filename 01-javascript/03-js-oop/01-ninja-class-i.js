@@ -1,4 +1,4 @@
-function Ninja(name, health) {
+function Ninja(name) {
     
     this.name = name;
     this.health = 100;
@@ -10,6 +10,7 @@ function Ninja(name, health) {
     }
     this.showStats = function() {
         console.log("Name: " + this.name + " Strength: " + strength + " Speed: " + speed + " Health: " + this.health);
+    
     }
     this.drinkSake = function() {
         betterHealth = this.health + 10;
@@ -20,9 +21,7 @@ function Ninja(name, health) {
 
 var ninja1 = new Ninja("Hyabusa");
 ninja1.sayName();
-// -> "My ninja name is Hyabusa!"
 ninja1.showStats();
-// -> "Name: Hayabusa, Health: 100, Speed: 3, Strength: 3"
 
 var ninja2 = new Ninja("Njomeza");
 ninja2.sayName();
