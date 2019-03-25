@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <title>Add new car</title>
+</head>
+<body>
+    <div class="container">
+        
+        <h2>Add new car</h2>
+       
+        <form action="/cars/create/", method="post">
+           
+            <div class="row">
+                <div class="form-group col-xs-3">
+                    <label for="car_brand">Car brand</label>
+                    <input type="text" class="form-control" id="car_brand" placeholder="Car Brand" name="car_brand">
+                </div>
+            </div>
+            <div class="row">
+                    <div class="form-group col-xs-3">
+                        <label for="type">Car type</label>
+                        <input type="text" class="form-control" id="type" placeholder="Car Type" name="type">
+                    </div>
+            </div>
+           
+            
+            <div class="row">
+                    <div class="form-group col-xs-3">
+                        <label for="year">Production Year</label>
+                        <input type="text" class="form-control" id="year" placeholder="Production Year" name="year">
+                    </div>
+            </div>
+        
+            
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+
+        
+    </div>
+
+    
+</body>
+</html>
