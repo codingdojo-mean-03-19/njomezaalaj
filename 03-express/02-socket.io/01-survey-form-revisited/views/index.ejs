@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript">
+    $(document).ready(function(){
+        var socket=io.connect();
+
+        $('#result').submit(function(e){
+            e.preventDefault();
+            socket.emit("posting_form",{
+                name: $('#name').val(),
+                location: $('#location').val(),
+                language: $('#language').val(),
+                comment: $('#comment').val()
+            });
+        });
+
+        socket.on('updated_message', function(data){
+            $('#message').html("You emitted the following info to the server." + JSON.stringify(data.response));
+        });
+        socket.on('random_number', function(data){
+            $('#number').html("Your lucky number emitted by the server is: " + JSON.stringify(data.response));
+        });
+
+    });
+    
+    </script>
+</head>
+<body>
+    <div class="container">
+
+        <div class="message"></div>
+        <div class="number"></div>
+            
+        <form  id="result">
+            <div class="row">
+                <div class="form-group col-xs-3">
+                    <label for="name">Your name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Your name" name="name">
+                </div>
+            </div>
+           
+            
+            <div class="row">
+                <div class="form-group col-xs-3">
+                    <label for="location">Dojo Location</label>
+                    <select name = "location" id="location">
+                        <option value = "Mountain View">Mountain View</option>
+                        <option value = "Chicago">Chicago</option>
+                        <option value = "LA">LA</option>
+                        <option value = "Prishtina">Seattle WA</option>
+                    </select>
+                </div>
+            </div>
+
+        <div class="row">
+            <div class="form-group col-xs-3">
+                <label for="language">Favorite Language</label>
+                <select name = "language" id="language">
+                    <option value = "Javascript">JavaScript</option>
+                    <option value = "Python">Python</option>
+                    <option value = "C#">C#</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="form-group col-xs-3">
+                <label for="comment">Comment</label>
+                <textarea id="comment" rows="3" placeholder="Comment" name="comment"></textarea>
+            </div>
+        </div>
+
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        
+    </div>
+
+    
+</body>
+</html>
