@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <title>Animals</title>
+    <style>
+    hr{
+        border: 1px solid grey;
+    }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+
+        <h1>The Dojo Message Board</h1>
+        <hr>
+
+        <form action="/message" method="POST">
+            <div class="row">
+                <div class="form-group col-xs-3">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" placeholder="Name" name="name">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-xs-3">
+                    <label for="message">Message:</label>
+                    <textarea name="message" id="message" cols="30" rows="10"></textarea>
+            </div>
+            </div>
+
+            <input type="submit" id="post" value="Post message">
+        
+        </form>
+        <% if(typeof(errors) !== 'undefined') { %>
+            <%for (var key in errors) {%>
+                <h3><%= errors[key].message %></h3>
+                <% } %>
+            <%} else {%>
+                <div>
+                    <%for(var message of messages){%>
+                <div>
+                    <h3>Name: <%= message.name %></h3>
+                    <h3>Message: <%= message.message %></h3>
+                    <% for (var comment of message._comments) {%>
+                        <h5><%="Name: " + comment.name %></h5>
+                        <h5><%="Comment: " + comment.text %></h5>
+                    <% } %>
+                    <form action="/comment/<%=message._id %>" method="post">
+                        <p>Name:</p><input type="text" name="name">
+                        <p>Comment: </p><textarea name="comment" id="" cols="30" rows="10"></textarea>
+                        <input type="submit" value="Post comment">
+                    </form>
+                </div>
+            <%}%>
+        </div>
+    <%}%>
+
+</body>
+</html>
